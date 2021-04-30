@@ -1,0 +1,130 @@
+# Notation:
+#   inte_seed -- random seed for initialization of RK-NN integrator
+#   data_seed -- random seed for generating data (input and output)
+#   dim -- dimension of state
+#   integrator_stage -- the number of stages used in RK scheme when constructing RK-NN architecture
+#   taylorloss_order -- targeted order of the integrator 
+#   step -- the number of iteration by the integrator (use step=1 as our default)
+#   epochs -- the maximum number of training iterations
+#   lr -- learning_rate of the optimizer
+#   gamma_init -- the coefficient to multiply on MSE (gamma perhaps changes as the epoch increases)
+#   mu_init -- the coefficient to multiply on taylorseries-based regularizer
+#   ratio_lim -- the obeservation relative error (prediction / reference RK method) as earlystopping requirement, usually we expect it below 1
+#   coefficient_weight -- whether the change of gamma or mu is needed, 'True' means need and 'False' means no need
+#   lr_decay -- time interval required for the learning rate to change (num of epochs)
+
+
+linear:
+  inte_seed: 1
+  data_seed: 1
+  dim: 1
+  integrator_stage: 3
+  taylorloss_order: 3
+  step: 1
+  epochs: 20000 
+  lr: 0.1
+  gamma_init: 1.0
+  mu_init: 10000000000000000
+  ratio_lim: 1.0
+  coefficient_weight: False
+  lr_decay: 10000
+
+
+square_nonlinear:
+  inte_seed: 1
+  data_seed: 1
+  dim: 1
+  integrator_stage: 3
+  taylorloss_order: 3
+  step: 1
+  epochs: 20000 
+  lr: 0.1
+  gamma_init: 1.0
+  mu_init: 1000000000000000
+  ratio_lim: 1.0
+  coefficient_weight: True
+  lr_decay: 10000
+
+
+# # If we want to obtain a 3rd-order integrator by RK-2 scheme, we set the configuration as the following
+# square_nonlinear:
+#   inte_seed: 1
+#   data_seed: 1
+#   dim: 1
+#   integrator_stage: 2
+#   taylorloss_order: 3
+#   step: 1
+#   epochs: 1000 # Set the number of iterations to obtain an integrator with a small taylorseries-based loss (from regularizer).
+#   lr: 1.0
+#   gamma_init: 0.0 # Ignore MSE because we focus on the order controlled by taylorseries-based regularizer.
+#   mu_init: 1000000000000000
+#   ratio_lim: 0.0
+#   coefficient_weight: False
+#   lr_decay: 400
+
+
+# # If we want to obtain a 6th-order integrator by RK-4 scheme, we set the configuration as the following
+# square_nonlinear:
+#   inte_seed: 1
+#   data_seed: 1
+#   dim: 1
+#   integrator_stage: 4
+#   taylorloss_order: 6
+#   step: 1
+#   epochs: 15000 # Set the number of iterations to obtain an integrator with a small taylorseries-based loss (from regularizer).
+#   lr: 1.0
+#   gamma_init: 0.0 # Ignore MSE because we focus on the order controlled by taylorseries-based regularizer.
+#   mu_init: 1000000000000000
+#   ratio_lim: 0.0
+#   coefficient_weight: False
+#   lr_decay: 3000
+
+
+# # If we want to obtain a 6th-order integrator by RK-6 scheme, we set the configuration as the following
+# square_nonlinear:
+#   inte_seed: 1
+#   data_seed: 1
+#   dim: 1
+#   integrator_stage: 6
+#   taylorloss_order: 6
+#   step: 1
+#   epochs: 60000 # Set the number of iterations to obtain an integrator with a small taylorseries-based loss (from regularizer).
+#   lr: 0.01
+#   gamma_init: 0.0 # Ignore MSE because we focus on the order controlled by taylorseries-based regularizer.
+#   mu_init: 1.0
+#   ratio_lim: 0.0
+#   coefficient_weight: False
+#   lr_decay: 10000
+
+
+vanderpol:
+  inte_seed: 1
+  data_seed: 1
+  dim: 2
+  integrator_stage: 3
+  taylorloss_order: 3
+  step: 1
+  epochs: 20000 
+  lr: 0.1
+  gamma_init: 1.0
+  mu_init: 1.0
+  ratio_lim: 0.6
+  coefficient_weight: False
+  lr_decay: 10000
+
+
+brusselator:
+  inte_seed: 1
+  data_seed: 1
+  dim: 2
+  integrator_stage: 3
+  taylorloss_order: 3
+  step: 1
+  epochs: 30000 
+  lr: 0.1
+  gamma_init: 1.0
+  mu_init: 1.0
+  ratio_lim: 16.0 # This is above 1 because the relative error is large when time step increases. But it is accurate enough for the evaluation on the whole training range.
+  coefficient_weight: False
+  lr_decay: 5000
+  
