@@ -22,7 +22,7 @@ Look at [examples](./examples).
     ```
 * Change the parameters (such as learning rate, integrator stage, targeted order and so on) in [configuration file](./examples/config.yml)
     * For "linear target", a huge weight is multiplied on Taylor-based regularizer as a scale because this value is too small.
-    * For "sqaure_nonlinear target", we multiply an increasing weight on MSE loss and a decreasing one on Taylor-based regularizer in order to focus on different loss in the training.
+    * For "square_nonlinear target", we multiply an increasing weight on MSE loss and a decreasing one on Taylor-based regularizer in order to focus on different loss in the training.
 
 
 ## See the evaluation 
