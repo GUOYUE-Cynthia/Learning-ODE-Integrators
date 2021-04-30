@@ -8,10 +8,6 @@ Install
 $pip install -r requirements.txt
 ```
 
-## Documentation
-
-See [here](docs/build/latex/intlib.pdf).
-
 
 ## Test on Different Targets
 Look at [examples](./examples).
