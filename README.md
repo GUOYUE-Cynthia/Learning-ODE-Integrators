@@ -31,7 +31,3 @@ Look at [examples](./examples).
 * Plot the MSE on Van der Pol Oscillator and the Brussealtor.
     Run ipynb file [plot error bar](./plot_error_bar.ipynb).
 * See the figures according to above evaluation in [results](./results).
-
-
-## Manuscript 
-See [notes](https://www.overleaf.com/read/sqtksyscpskq).
