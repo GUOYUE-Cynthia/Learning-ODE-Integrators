@@ -1,4 +1,4 @@
-# Personalized Algorithm Generation: A Case Study in Meta-Learning ODE Integrators
+# Personalized Algorithm Generation: A Case Study in Learning ODE Integrators
 
 ## Requirements
 This project uses `python 3.8`. Set up the project using the following step:
